@@ -1,5 +1,25 @@
-import sys
+T = int(input())  # 테스트 케이스의 개수
 
-T = int(sys.stdin.readline())
+for i in range(T):
+    sent = list(input())
 
-Stack = []
+    stack = []
+    Ans = "YES"
+    for Par in sent:
+        if Par == '(':
+            stack.append(Par)
+        else:
+            if len(stack) == 0:
+                Ans = "NO"
+                break
+            else:
+                stack.pop()
+
+    if Ans == "YES":
+        if len(stack) != 0:
+            print("NO")
+        else:
+            print("YES")
+    else:
+        print("NO")
+
