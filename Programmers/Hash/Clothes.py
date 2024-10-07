@@ -1,7 +1,5 @@
-from itertools import combinations
-
 def solution(clothes):
-    answer = 0
+    answer = 1
 
     clothes_hash = {}
 
@@ -13,16 +11,10 @@ def solution(clothes):
         else:
             clothes_hash[key] += 1
 
-    key_len = len(clothes_hash.keys())
+    for val in clothes_hash.values():
+        answer *= (val + 1)
 
-    for lenght in range(1,key_len + 1):
-        for clothe_keys in combinations(clothes_hash.keys(), lenght):
-            count = 1
-            for key in clothe_keys:
-                count *= clothes_hash.get(key)
-            answer += count
-
-    return answer
+    return answer-1
 
 # 테스트 케이스
 print(solution([["yellow_hat", "headgear"]]))
