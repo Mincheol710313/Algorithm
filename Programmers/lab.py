@@ -1,15 +1,13 @@
-def func(level, diffs, times):
-    total_time = 0
-    prev_time = 0
+clothes = [["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]
 
-    for diff, time in zip(diffs, times):
-        if level < diff:
-            total_time += (diff-level)*(prev_time+time)+time
-        else:
-            total_time += time
+clothe_hash = {}
 
-        prev_time = time
-    
-    return total_time
+for clothe in clothes:
+    val, key = clothe[0], clothe[1]
 
-print(func(3, [1,5,3], [2,4,7]))
+    if key not in clothe_hash.keys():
+        clothe_hash[key] = [val]
+    else:
+        clothe_hash[key].append(val)
+
+print(len(clothe_hash.keys()))
