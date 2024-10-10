@@ -1,13 +1,11 @@
-clothes = [["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]]
+import math
 
-clothe_hash = {}
+arr = [1 for _ in range(1001)]
 
-for clothe in clothes:
-    val, key = clothe[0], clothe[1]
+for i in range(1, int(math.sqrt(1000))+1):
+    j = 2
+    while i * j <= 1000:
+        arr[i*j] += 1
+        j += 1
 
-    if key not in clothe_hash.keys():
-        clothe_hash[key] = [val]
-    else:
-        clothe_hash[key].append(val)
-
-print(len(clothe_hash.keys()))
+print(arr)
