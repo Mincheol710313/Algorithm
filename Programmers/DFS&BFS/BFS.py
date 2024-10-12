@@ -1,6 +1,7 @@
 """ 매일 한 번씩 익숙해질 때까지 구현해보기! 
 Daily
 D-1 : 2024.10.10
+D-2 : 2024.10.12
 """
 """
 Graph 자료구조
@@ -13,6 +14,8 @@ BFS(Binary-First Search) : 너비 우선 탐색, 가까운 노드부터 우선�
 Queue(FIFO) 자료구조를 이용!!
 """
 from collections import deque
+
+n = 8
 
 graph = [
     [0, 1, 1, 0, 0, 0, 0, 0],
@@ -30,13 +33,17 @@ visited = [False] * 8
 def bfs(s):
     q = deque()
     q.append(s)
-    while q: # q가 비울 때까지
+    
+    while q:
         v = q.popleft()
+
         if not visited[v]:
-            visited[v] = True # 방문 처리
+            visited[v] = True
             print(chr(v + ord('A')), end=" ")
-            for idx in range(len(graph[v])):
-                if graph[v][idx] == 1 and not visited[idx]:
-                    q.append(idx)
+
+        for idx in range(n):
+            if graph[v][idx] == 1  and not visited[idx]:
+                if idx not in q:
+                    q.append(idx)  
 
 bfs(0)

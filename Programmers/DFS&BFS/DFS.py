@@ -1,6 +1,7 @@
 """ 매일 한 번씩 익숙해질 때까지 구현해보기! 
 Daily
 D-1 : 2024.10.10
+D-2 : 2024.10.12
 """
 """
 Graph 자료구조
@@ -29,10 +30,12 @@ graph = [
 visited = [False] * 8
 
 def dfs(s, n):
-    visited[s] = True
+    if not visited[s]:
+        visited[s] = True
+
     print(chr(s + ord('A')), end=" ")
     for idx in range(n):
-        if graph[s][idx] == 1 and  not visited[idx]:
-            dfs(idx, n)
-
+        if graph[s][idx] == 1 and not visited[idx]:
+            dfs(idx, n) 
+    
 dfs(0, n)
