@@ -2,6 +2,7 @@
 Daily
 D-1 : 2024.10.10
 D-2 : 2024.10.12
+D-Day : 2024.10.13
 """
 """
 Graph 자료구조
@@ -33,17 +34,15 @@ visited = [False] * 8
 def bfs(s):
     q = deque()
     q.append(s)
-    
+
     while q:
         v = q.popleft()
 
-        if not visited[v]:
-            visited[v] = True
-            print(chr(v + ord('A')), end=" ")
-
+        visited[v] = True
+        print(chr(v + ord('A')), end=" ")
         for idx in range(n):
-            if graph[v][idx] == 1  and not visited[idx]:
+            if graph[v][idx] == 1 and not visited[idx]:
                 if idx not in q:
-                    q.append(idx)  
+                    q.append(idx)
 
 bfs(0)

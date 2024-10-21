@@ -2,6 +2,7 @@
 Daily
 D-1 : 2024.10.10
 D-2 : 2024.10.12
+D-Day : 2024.10.13
 """
 """
 Graph 자료구조
@@ -30,12 +31,13 @@ graph = [
 visited = [False] * 8
 
 def dfs(s, n):
+
     if not visited[s]:
         visited[s] = True
+        print(chr(s + ord('A')), end=" ")
 
-    print(chr(s + ord('A')), end=" ")
     for idx in range(n):
         if graph[s][idx] == 1 and not visited[idx]:
-            dfs(idx, n) 
+            dfs(idx, n)
     
 dfs(0, n)
