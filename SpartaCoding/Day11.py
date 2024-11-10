@@ -1,5 +1,3 @@
-from collections import deque
-
 N, M = map(int, input().split()) # N : Node 개수, M : 간선 개수
 
 graph = [[] for _ in range(N+1)]
@@ -30,4 +28,3 @@ if flag:
     print("Yes")
 else:
     print("yes")
-    
