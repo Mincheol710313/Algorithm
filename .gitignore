@@ -1,0 +1,6 @@
+# VS Code Settings
+.vscode/
+
+# Build artifacts
+C++/sr/bin
+*.exe
