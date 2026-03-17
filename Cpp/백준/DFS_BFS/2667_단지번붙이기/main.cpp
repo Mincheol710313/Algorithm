@@ -1,14 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using namespace std;
-
 /*
-- ${DISPLAY_NAME}
-- 분류: ${CATEGORY}
-- 난이도: ${DIFFICULTY}
-- 날짜: ${TODAY}
-- 링크: ${PROBLEM_LINK}
+- [백준] 2667. 단지번붙이기
+- 분류: DFS_BFS
+- 난이도: 실버 1
+- 날짜: 2026.03.17
+- 링크: https://www.acmicpc.net/problem/2667
 */
 
 int main() {
