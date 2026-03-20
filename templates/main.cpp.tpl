@@ -16,5 +16,5 @@ int main() {
     cin.tie(NULL);
 // TODO: 풀이 작성
 
-return 0;
+    return 0;
 }
