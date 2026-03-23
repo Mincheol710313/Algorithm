@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using namespace std;
-
 /*
 - ${DISPLAY_NAME}
 - 분류: ${CATEGORY}
