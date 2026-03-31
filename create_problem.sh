@@ -58,9 +58,10 @@ echo "    4) DFS_BFS"
 echo "    5) 그리디 (Greedy)"
 echo "    6) 동적프로그래밍 (DP)"
 echo "    7) 구현 (Implementation)"
-echo "    8) 기타 직접입력"
+echo "    8) 투포인터 (TwoPointer)"
+echo "    9) 기타 직접입력"
 echo ""
-read -p "    선택 (1~8): " TYPE_CHOICE
+read -p "    선택 (1~9): " TYPE_CHOICE
 
 case $TYPE_CHOICE in
 1) CATEGORY="자료구조" ;;
@@ -70,7 +71,8 @@ case $TYPE_CHOICE in
 5) CATEGORY="그리디" ;;
 6) CATEGORY="동적프로그래밍" ;;
 7) CATEGORY="구현" ;;
-8)
+8) CATEGORY="투포인터" ;;
+9)
 read -p "    유형 이름 입력: " CATEGORY
 ;;
 *)
