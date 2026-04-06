@@ -22,10 +22,6 @@ bool inRange(int nr, int nc) {
     return nr >= 0 && nr < r && nc >= 0 && nc < c;
 }
 
-bool isExit(int cr, int cc) {
-    return cr == 0 || cr == r-1 || cc == 0 || cc == c-1;
-}
-
 void fire_bfs() {
     queue<tuple<int,int>> q;
     
