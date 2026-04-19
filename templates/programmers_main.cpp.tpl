@@ -13,7 +13,7 @@ using namespace std;
 // TODO: solution 함수 시그니처를 문제에 맞게 수정하세요.
 // ================================================================
 
-int solution(vector<int> v) {
+int solution() {
     int answer = 0;
 
     // TODO: 풀이 작성
