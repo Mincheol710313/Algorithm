@@ -90,18 +90,19 @@ echo ""
 if [ "$PLATFORM_EN" == "Baekjoon" ]; then
 read -p "    문제 번호 (예: 1260): " PROBLEM_NUM
 read -p "    문제 이름 (예: DFS와BFS): " PROBLEM_NAME
+read -p "    난이도 (예: Silver III / Level 1): " DIFFICULTY
 FOLDER_NAME="${PROBLEM_NUM}_${PROBLEM_NAME}"
 PROBLEM_LINK="https://www.acmicpc.net/problem/${PROBLEM_NUM}"
 DISPLAY_NAME="[백준] ${PROBLEM_NUM}. ${PROBLEM_NAME}"
 else
 read -p "    문제 이름 (예: 완주하지_못한_선수): " PROBLEM_NAME
 read -p "    레벨 (예: Level1): " LEVEL
+DIFFICULTY="${LEVEL}"
 FOLDER_NAME="${PROBLEM_NAME}"
 PROBLEM_LINK="https://school.programmers.co.kr/learn/courses/30/lessons/"
 DISPLAY_NAME="[프로그래머스] ${PROBLEM_NAME}"
 fi
 
-read -p "    난이도 (예: Silver III / Level 1): " DIFFICULTY
 TODAY=$(date +"%Y.%m.%d")
 
 # ── 4. 경로 설정 ───────────────────────────────────────────
@@ -113,7 +114,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ "$PLATFORM_EN" == "Baekjoon" ]; then
 TARGET_DIR="${SCRIPT_DIR}/Cpp/백준/${CATEGORY}/${FOLDER_NAME}"
 else
-TARGET_DIR="${SCRIPT_DIR}/Cpp/프로그래머스/${LEVEL}/${FOLDER_NAME}"
+TARGET_DIR="${SCRIPT_DIR}/Cpp/프로그래머스/${CATEGORY}/${LEVEL}/${FOLDER_NAME}"
 fi
 
 # ── 5. 폴더 & 파일 생성 ────────────────────────────────────
@@ -137,15 +138,21 @@ mkdir -p "$TARGET_DIR"
 
 # ── main.cpp 생성 ──────────────────────────────────────────
 
-export DISPLAY_NAME CATEGORY DIFFICULTY TODAY PROBLEM_LINK
+export DISPLAY_NAME PROBLEM_NAME CATEGORY DIFFICULTY TODAY PROBLEM_LINK LEVEL
 
-envsubst '${DISPLAY_NAME}${CATEGORY}${DIFFICULTY}${TODAY}${PROBLEM_LINK}' \
-  < "${SCRIPT_DIR}/templates/main.cpp.tpl" \
+if [ "$PLATFORM_EN" == "Programmers" ]; then
+    MAIN_TPL="${SCRIPT_DIR}/templates/programmers_main.cpp.tpl"
+else
+    MAIN_TPL="${SCRIPT_DIR}/templates/main.cpp.tpl"
+fi
+
+envsubst '${DISPLAY_NAME}${PROBLEM_NAME}${CATEGORY}${DIFFICULTY}${TODAY}${PROBLEM_LINK}${LEVEL}' \
+  < "$MAIN_TPL" \
   > "${TARGET_DIR}/main.cpp"
 
 # ── README.md 생성 ─────────────────────────────────────────
 
-envsubst '${DISPLAY_NAME}${CATEGORY}${DIFFICULTY}${TODAY}${PROBLEM_LINK}' \
+envsubst '${DISPLAY_NAME}${PROBLEM_NAME}${CATEGORY}${DIFFICULTY}${TODAY}${PROBLEM_LINK}${LEVEL}' \
   < "${SCRIPT_DIR}/templates/README.md.tpl" \
   > "${TARGET_DIR}/README.md"
 
